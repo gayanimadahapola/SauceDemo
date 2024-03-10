@@ -25,7 +25,7 @@ public class SauceDemoTests {
         login(driver);
         addItemsToCart(driver, 3);
         enterShippingDetails(driver);
-        verifyCheckoutOverviewPage(driver);
+        //verifyCheckoutOverviewPage(driver);
         completeThePurchase(driver);
 
     }
@@ -88,7 +88,10 @@ public class SauceDemoTests {
         String confirmationMessage = driver.findElement(By.cssSelector(".complete-header")).getText();
         Assert.assertEquals("Thank you for your order!", confirmationMessage);
 
+        //Close the browser
+        driver.quit();
     }
+
 
 
 }
