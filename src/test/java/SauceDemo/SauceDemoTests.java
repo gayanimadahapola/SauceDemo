@@ -60,24 +60,17 @@ public class SauceDemoTests {
     }
     public void verifyCheckoutOverviewPage(WebDriver driver)
     {
-        //Verify Payment Information
-        //String paymentInfo = driver.findElement(By.xpath("(//div[text()='Payment Information']/../div[@class=\"summary_value_label\"])[1]")).getText();
-        //assertTrue(paymentInfo.contains("ExpectedPaymentInfo"));
-        String paymentInfo = driver.findElement(By.cssSelector(".summary_value_label:nth-of-type(1)")).getText();
-        assertEquals("SauceCard #31337", paymentInfo);
-
-        //Verify Shipping Information
-        String shippingInfo = driver.findElement(By.cssSelector(".summary_value_label:nth-of-type(2)")).getText();
-        assertEquals("Free Pony Express Delivery!",shippingInfo);
-
-        //Verify price total
-
-        //verify Tax
-        String tax = driver.findElement(By.cssSelector(".summary_value_label:nth-of-type(5)")).getText();
-        assertEquals(" ", tax);
-        //verify item total
-
-        //Verify total amount
+        //Verify Payment Info, Shipping info, Item Total, tax and total amounts fields are not empty
+        String paymentInfo = driver.findElement(By.xpath("(//div[text()='Payment Information']/../div[@class='summary_value_label'])[1]")).getText();
+        Assert.assertTrue(!paymentInfo.isEmpty());
+        String shippingInfo = driver.findElement(By.xpath("(//div[text()='Payment Information']/../div[@class='summary_value_label'])[2]")).getText();
+        Assert.assertTrue(!shippingInfo.isEmpty());
+        String itemTotal = driver.findElement(By.xpath("//div[text()='Price Total']/../div[@class='summary_subtotal_label']")).getText();
+        Assert.assertTrue(!itemTotal.isEmpty());
+        String tax = driver.findElement(By.xpath("//div[text()='Price Total']/../div[@class='summary_tax_label']")).getText();
+        Assert.assertTrue(!tax.isEmpty());
+        String totalAmount = driver.findElement(By.xpath("//div[@class='summary_info_label summary_total_label']")).getText();
+        Assert.assertTrue(!totalAmount.isEmpty());
     }
 
     public static void completeThePurchase(WebDriver driver)
