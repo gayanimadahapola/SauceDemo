@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+//import static org.testng.Assert.assertTrue;
 
 public class SauceDemoTests {
 
@@ -25,7 +25,7 @@ public class SauceDemoTests {
         login(driver);
         addItemsToCart(driver, 3);
         enterShippingDetails(driver);
-        //verifyCheckoutOverviewPage(driver);
+        verifyCheckoutOverviewPage(driver);
         completeThePurchase(driver);
 
     }
