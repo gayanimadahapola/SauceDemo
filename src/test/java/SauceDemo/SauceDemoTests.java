@@ -27,7 +27,6 @@ public class SauceDemoTests {
         enterShippingDetails(driver);
         verifyCheckoutOverviewPage(driver);
         completeThePurchase(driver);
-
     }
     private static void login(WebDriver driver) {
 
